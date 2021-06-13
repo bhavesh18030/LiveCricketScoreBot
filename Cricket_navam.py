@@ -177,33 +177,44 @@ class Cricket:
 			r = r*20
 			self.Team[curr_bowl_name][i] = r 
 	def Update(self):
-		print(self.get_curr_team_score())
-		print(self.get_playing_bats())
-		print(self.get_playing_bowl())
+		# print(self.get_curr_team_score())
+		# print(self.get_playing_bats())
+		# print(self.get_playing_bowl())
 		self.Update_Innings_stats()
 		
-		# self.pretty_print(self.Inning[self.team1].Batsman)
-		# self.pretty_print(self.Inning[self.team1].Bowler)
-		# self.pretty_print(self.Inning[self.team2].Batsman)
-		# self.pretty_print(self.Inning[self.team2].Bowler)
-		self.print_fantasy_points()
+		# print(self.pretty_print(self.Inning[self.team1].Batsman))
+		# print(self.pretty_print(self.Inning[self.team1].Bowler))
+		# print(self.pretty_print(self.Inning[self.team2].Batsman))
+		# print(self.pretty_print(self.Inning[self.team2].Bowler))
+		# self.print_fantasy_points()
+
+	def get_score_board(self):
+		a = self.pretty_print(self.Inning[self.team1].Batsman)
+		b = self.pretty_print(self.Inning[self.team1].Bowler)
+		c = self.pretty_print(self.Inning[self.team2].Batsman)
+		d = self.pretty_print(self.Inning[self.team2].Bowler)
+		return a + "\n" + b + "\n" + c + "\n" + d
 
 	def pretty_print(self,dic):
-	
-		print(" "*29,end=" ")
+		
+		final = ""
+		final += " "*29 
 		if len(dic)>0:
 			for i in dic:
+				temp = ""
 				for j in dic[i]:
-					print(j,end=" "*(5-len(j)))
+					temp += j + " "*(5-len(j))  
+				final += temp
 				break
-		print()	
+		final += "\n"	
 		for i in dic:
-			print(i,end=" "*(30-len(i)))
+			final += i + " "*(30-len(i))
+			temp = ""
 			for j in dic[i]:
-				print(dic[i][j],end=" "*(5-len(dic[i][j])))
-			print()
+				temp  += dic[i][j] + " "*(5-len(dic[i][j])) 
+			final += temp + '\n'
 
-		# print()
+		return final
 
 	def print_fantasy_points(self):
 		print()
